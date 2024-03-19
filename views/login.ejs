@@ -1,0 +1,13 @@
+<%- include partials/htmlhead.ejs %>
+
+
+<h1><%= title %></h1>
+<form action="/encode" method="GET">
+    <label for="text">Insert normal text:</label><br>
+    <textarea id="text" name="text"></textarea><br>
+    <button type="submit">Encode</button>
+</form>
+<p>Decoded text: <%= data.encoded %></p>
+
+
+<%- include partials/htmlhead.ejs %>
