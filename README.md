@@ -1,6 +1,7 @@
 # DayLogger
  A simple journal express application which lets you track each days mood
 
+## Install and start
 From the project directory, download and start MongoDB in a terminal using:
 
 ```sh
