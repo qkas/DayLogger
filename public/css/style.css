@@ -1,0 +1,83 @@
+html,
+body {
+    background-color: #222;
+}
+
+body {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.wrapper {
+    color: #fff;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+}
+
+h1 {
+    margin-bottom: 100px;
+}
+
+span {
+    color: #7319fa;
+    background-image: -webkit-linear-gradient(45deg, #7319fa, #ff33b4, #ff7e29);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+form button {
+    background-color: #333;
+    border: none;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+form button:hover {
+    background-color: #444;
+}
+
+form input {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    margin: 4px 2px;
+}
+
+form input:focus {
+    border-color: #aaa;
+    outline: none;
+}
+
+/* mood raiting styles */
+.rating {
+    margin-top: 20px;
+}
+.rating ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.rating li {
+    display: inline-block;
+    padding: 20px;    
+}
+.rating input {
+    visibility:hidden;
+    position: absolute;
+}
+.rating label {
+    cursor: pointer;
+    font-size: 50px;
+}
+.rating input:checked + label {
+    -webkit-text-stroke-width: 1px;
+}

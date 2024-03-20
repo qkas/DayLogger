@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <script src="https://kit.fontawesome.com/c39f856afb.js" crossorigin="anonymous"></script>
+    <link rel="preload" href="https://kit.fontawesome.com/c39f856afb.js" as="script" crossorigin="anonymous">
+    <title><% title %></title>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Good <%= data.timeOfDay %>, <u><%= data.name %></u>.</h1>
+        <h2>How are you feeling today?</h2>
+        <form action="/" class="rating" method="GET">
+            <ul>
+                <li>
+                    <input type='radio' value='1' name='radio' id='radio1'/>
+                    <label for='radio1' style='color: rgb(255, 90, 90)'><i class="fa-solid fa-face-tired"></i></label>
+                </li>
+                <li>
+                    <input type='radio' value='2' name='radio'  id='radio2'/>
+                    <label for='radio2' style='color: rgb(255, 194, 82)'><i class="fa-solid fa-face-frown"></i></label>
+                </li>
+                <li>
+                    <input type='radio' value='3' name='radio'  id='radio3'/>
+                    <label for='radio3' style='color:rgb(255, 255, 66)'><i class="fa-solid fa-face-meh"></i></label>
+                </li>
+                <li>
+                    <input type='radio' value='4' name='radio'  id='radio4'/>
+                    <label for='radio4' style='color:rgb(90, 255, 90)'><i class="fa-solid fa-face-smile"></i></label>
+                </li>
+                <li>
+                    <input type='radio' value='5' name='radio'  id='radio5'/>
+                    <label for='radio5' style='color:rgb(60, 255, 60)'><i class="fa-solid fa-face-grin-stars"></i></label>
+                </li>
+            </ul>
+            <button type="submit">Submit</button>
+          </form>
+    </div>
+</body>
+</html>

@@ -1,13 +1,22 @@
-<%- include partials/htmlhead.ejs %>
-
-
-<h1><%= title %></h1>
-<form action="/encode" method="GET">
-    <label for="text">Insert normal text:</label><br>
-    <textarea id="text" name="text"></textarea><br>
-    <button type="submit">Encode</button>
-</form>
-<p>Decoded text: <%= data.encoded %></p>
-
-
-<%- include partials/htmlhead.ejs %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <script src="https://kit.fontawesome.com/c39f856afb.js" crossorigin="anonymous"></script>
+    <link rel="preload" href="https://kit.fontawesome.com/c39f856afb.js" as="script" crossorigin="anonymous">
+    <title><% title %></title>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Login</h1>
+        <h2>First name:</h2>
+        <form action="/daily" method="GET">
+            <input type="text" id="fname" name="fname">
+            <button type="submit">Login</button>
+        </form>
+        <div class="alert"><%= data.alert %></div>
+    </div>
+</body>
+</html>
