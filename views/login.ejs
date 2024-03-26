@@ -11,12 +11,19 @@
 <body>
     <div class="wrapper">
         <h1>Login</h1>
-        <h2>First name:</h2>
         <form action="/daily" method="GET">
-            <input type="text" id="fname" name="fname">
+            <div class="form-group">
+                <label for="fname">First name:</label>
+                <input type="text" id="fname" name="fname" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
             <button type="submit">Login</button>
         </form>
         <div class="alert"><%= data.alert %></div>
+        <p>Don't have an account? <a href="/register.ejs">Register</a></p>
     </div>
 </body>
 </html>
