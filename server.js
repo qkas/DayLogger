@@ -38,6 +38,14 @@ app.get('/login', (req, res) => {
   });
 });
 
+// render registration page
+app.get('/register', (req, res) => {
+  res.render('register', {
+    title: 'Registration page',
+    data: req.query,
+  });
+});
+
 // render form page
 app.get('/daily', (req, res) => {
   const name = req.query.fname;
