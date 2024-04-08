@@ -1,7 +1,18 @@
 import express from 'express';
+import session from 'express-session'
+import flash from 'express-flash';
+import dotenv from 'dotenv';
+import mongoose from 'mongoose';
+import passport from 'passport';
+
+import { router } from "./routes/routes.js";
+import { loginCheck } from "./auth/passport.js";
 
 import { fileURLToPath } from 'url';
 import { dirname, parse, sep } from 'path';
+
+loginCheck(passport);
+dotenv.config();
 
 // configuration
 const __dirname = dirname(fileURLToPath(import.meta.url)) + sep;
@@ -9,11 +20,16 @@ const cfg = {
   port: process.env.PORT || 3000,
   dir: {
     root: __dirname,
-  }
+  },
+  database: process.env.MONGOLAB_URI
 };
 
 // Express initiation
 const app = express();
+
+mongoose.connect(cfg.database)
+.then(() => console.log('Connected to DB'))
+.catch(err => console.log(err));
 
 // use EJS templates
 app.set('view engine', 'ejs');
@@ -22,51 +38,22 @@ app.set('views', 'views');
 // serve static files
 app.use(express.static(__dirname + '/public'));
 
-// render main page
-app.get('/', (req, res) => {
-  res.render('main', {
-    title: 'Daylogger',
-    data: req.query,
-  });
-});
+app.use(express.urlencoded({extended: false}));
 
-// render login page
-app.get('/login', (req, res) => {
-  res.render('login', {
-    title: 'Login page',
-    data: req.query,
-  });
-});
+app.use(session({
+    secret:'oneboy',
+    saveUninitialized: true,
+    resave: true
+}));
 
-// render registration page
-app.get('/register', (req, res) => {
-  res.render('register', {
-    title: 'Registration page',
-    data: req.query,
-  });
-});
+app.use(flash());
 
-// render form page
-app.get('/daily', (req, res) => {
-  const name = req.query.fname;
-  const currentTime = new Date();
-  let timeOfDay;
+// use passport
+app.use(passport.initialize());
+app.use(passport.session());
 
-  // Determine the time of day based on the current hour
-  if (currentTime.getHours() < 12) {
-    timeOfDay = 'Morning';
-  } else if (currentTime.getHours() < 17) {
-    timeOfDay = 'Afternoon';
-  } else {
-    timeOfDay = 'Evening';
-  }
-  res.render('daily', {
-    title: 'Todays mood',
-    data: { timeOfDay, name },
-  });
-});
+// use router
+app.use('/', router);
 
 // start server
-app.listen(cfg.port, () => {
-  console.log(`App listening at http://localhost:${cfg.port}`);
-});
+app.listen(cfg.port, console.log(`Server running on http://localhost:${cfg.port}`));
