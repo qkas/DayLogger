@@ -20,14 +20,6 @@ h1 {
     color: #2C7865;
 }
 
-span {
-    color: #7319fa;
-    background-image: -webkit-linear-gradient(45deg, #7319fa, #ff33b4, #ff7e29);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
 form button {
     background-color: #FF9800;
     border: none;
@@ -77,10 +69,18 @@ form input:focus {
     visibility:hidden;
     position: absolute;
 }
-.rating label {
+.rating label i {
     cursor: pointer;
     font-size: 50px;
 }
-.rating input:checked + label {
-    -webkit-text-stroke-width: 1px;
+.rating .radio-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.rating .radio-container span {
+    margin-top: 5px;
+}
+.rating input:checked + label i {
+    transform: scale(1.1);
 }
