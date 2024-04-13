@@ -15,9 +15,19 @@ body {
     font-weight: bold;
 }
 
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
 h1 {
     margin-bottom: 100px;
     color: #2C7865;
+}
+
+a {
+    color: #FF9800;
 }
 
 form button {
@@ -32,6 +42,7 @@ form button {
     cursor: pointer;
     border-radius: 8px;
     font-weight: bold;
+    width: 100px;
 }
 
 form button:hover {
@@ -50,6 +61,18 @@ form input {
 form input:focus {
     border-color: #aaa;
     outline: none;
+}
+
+.flash-messages {
+    margin: 0px 10px;
+}
+
+.flash-message {
+    background-color: #adbeba;
+    color: #e7563d;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px auto;
 }
 
 /* mood raiting styles */
@@ -83,4 +106,7 @@ form input:focus {
 }
 .rating input:checked + label i {
     transform: scale(1.1);
+}
+.rating input:checked + label span {
+    text-decoration: underline;
 }

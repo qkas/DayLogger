@@ -6,7 +6,7 @@
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <script src="https://kit.fontawesome.com/c39f856afb.js" crossorigin="anonymous"></script>
     <link rel="preload" href="https://kit.fontawesome.com/c39f856afb.js" as="script" crossorigin="anonymous">
-    <title><% title %></title>
+    <title><%= title %></title>
 </head>
 
 <body>
@@ -15,7 +15,7 @@
         <form action="/login" method="post">
             <div>
                 <label for="email">Email:</label>
-                <input type="text" id="email" name="email">
+                <input type="text" id="email" name="email" value="<%= email %>">
             </div>
             <div>
                 <label for="password">Password:</label>
@@ -23,6 +23,17 @@
             </div>
             <button type="submit">Login</button>
         </form>
+
+        <% if (messages.length > 0) { %>
+            <div class="flash-messages">
+                <% messages.forEach(message => { %>
+                <div class="flash-message">
+                    <%= message %>
+                </div>
+                <% }); %>
+            </div>
+        <% } %>
+        
         <p>Don't have an account? <a href="/register">Register</a></p>
     </div>
 </body>

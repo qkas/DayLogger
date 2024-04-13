@@ -4,6 +4,7 @@ import flash from 'express-flash';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import passport from 'passport';
+import cookieParser from 'cookie-parser';
 
 import { router } from "./routes/routes.js";
 import { loginCheck } from "./auth/passport.js";
@@ -40,10 +41,12 @@ app.use(express.static(__dirname + '/public'));
 
 app.use(express.urlencoded({extended: false}));
 
+app.use(cookieParser());
 app.use(session({
-    secret:'oneboy',
+    secret: process.env.SESSION_SECRET,
     saveUninitialized: true,
-    resave: true
+    resave: true,
+    cookie: { maxAge: 900000  } // 15 minutes
 }));
 
 app.use(flash());

@@ -4,13 +4,13 @@ import { User } from '../models/User.js';
 
 export const loginCheck = passport => {
     passport.use(
-        new LocalStrategy({ usernameField: "email" }, (email, password, done) => {
+        new LocalStrategy({ usernameField: 'email', passReqToCallback: true }, (req, email, password, done) => {
             //Check user
             User.findOne({ email: email })
                 .then((user) => {
                     if (!user) {
-                        console.log("Wrong email or password");
-                        return done();
+                        req.flash('failure', 'Incorrect email or password');
+                        return done(null, false);
                     }
                     //Match Password
                     bcrypt.compare(password, user.password, (error, isMatch) => {
@@ -18,12 +18,15 @@ export const loginCheck = passport => {
                         if (isMatch) {
                             return done(null, user);
                         } else {
-                            console.log("Wrong email or password");
-                            return done();
+                            req.flash('failure', 'Incorrect email or password');
+                            return done(null, false);
                         }
                     });
                 })
-                .catch((error) => console.log(error));
+                .catch((error) => {
+                    console.log(error);
+                    return done(error);
+                });
         })
     );
     passport.serializeUser((user, done) => {
