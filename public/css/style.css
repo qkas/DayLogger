@@ -29,6 +29,20 @@ nav ul li a {
 
 nav ul li a:hover {
     background-color: #555;
+    border-radius: 8px;
+}
+
+nav ul li button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+nav ul li button:hover {
+    background-color: #555;
 }
 
 .wrapper {
@@ -66,7 +80,7 @@ form {
     flex-direction: column;
 }
 
-form button {
+.wrapper form button {
     background-color: #FF9800;
     border: none;
     color: #2C7865;
@@ -81,7 +95,7 @@ form button {
     width: 100px;
 }
 
-form button:hover {
+.wrapper form button:hover {
     background-color: #444;
 }
 
@@ -117,10 +131,8 @@ form input:focus {
 }
 .rating ul {
     padding: 0;
-    margin: 20px 0;
+    margin: 10px 0;
     list-style: none;
-    background-color: rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
 }
 .rating li {
     display: inline-block;
@@ -150,5 +162,7 @@ form input:focus {
 }
 .description {
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
 }
