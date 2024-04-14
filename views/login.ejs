@@ -11,9 +11,9 @@
     <%- include('partials/header') %>
     <% if (protect.length > 0) { %>
         <div class="flash-messages">
-            <% messages.forEach(message => { %>
+            <% protect.forEach(protect => { %>
             <div class="flash-message">
-                <%= message %>
+                <%= protect %>
             </div>
             <% }); %>
         </div>
