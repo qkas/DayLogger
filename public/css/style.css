@@ -1,6 +1,6 @@
 html,
 body {
-    background-color: #D9EDBF;
+    background-color: #bfc9b5;
 }
 
 body {
@@ -81,8 +81,10 @@ form input:focus {
 }
 .rating ul {
     padding: 0;
-    margin: 0;
+    margin: 20px 0;
     list-style: none;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
 }
 .rating li {
     display: inline-block;
@@ -109,4 +111,8 @@ form input:focus {
 }
 .rating input:checked + label span {
     text-decoration: underline;
+}
+.description {
+    display: flex;
+    flex-direction: column;
 }

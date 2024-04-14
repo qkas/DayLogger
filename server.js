@@ -49,6 +49,7 @@ app.use(session({
     cookie: { maxAge: 900000  } // 15 minutes
 }));
 
+// use flash messages
 app.use(flash());
 
 // use passport

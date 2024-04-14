@@ -1,12 +1,12 @@
 import bcrypt from 'bcryptjs';
 import { User } from '../models/User.js';
 
-const title = 'Registration page';
+const title = 'Registration';
 
 export const registerView = (req, res) => {
     res.render('register', {
         title,
-        messages: req.flash('failure')
+        messages: req.flash('failure'),
     });
 }
 

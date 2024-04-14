@@ -1,6 +1,6 @@
 import passport from 'passport';
 
-const title =  'Login page';
+const title =  'Login';
 
 // For View 
 export const loginView = (req, res) => {
@@ -17,12 +17,7 @@ export const loginUser = (req, res) => {
     //Required
     if (!email || !password) {
         req.flash('failure', 'Please fill in all the fields.');
-        res.render('login', {
-            title,
-            messages: req.flash('failure'),
-            email,
-            password,
-        });
+        return res.redirect('/login');
     } else {
         passport.authenticate('local', {
             successRedirect: '/dashboard',

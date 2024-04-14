@@ -6,62 +6,91 @@
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <script src="https://kit.fontawesome.com/c39f856afb.js" crossorigin="anonymous"></script>
     <link rel="preload" href="https://kit.fontawesome.com/c39f856afb.js" as="script" crossorigin="anonymous">
-    <title><% title %></title>
+    <title><%= title %></title>
 </head>
 <body>
     <div class="wrapper">
         <h1>Good <%= timeOfDay %>, <u><%= user.username %></u>.</h1>
-        <h2>How are you feeling today?</h2>
-        <form action="/" class="rating" method="GET">
-            <ul>
-                <li>
-                    <input type='radio' value='1' name='radio' id='radio1'/>
-                    <label for='radio1' style='color: rgb(230, 49, 49)'>
-                        <div class="radio-container">
-                            <i class="fa-solid fa-face-tired"></i>
-                            <span>Terrible</span>
+
+        <% if (!hasPostedToday) { %>
+            <h2>How are you feeling today?</h2>
+            <form action="/dashboard" method="POST">
+                <div class="rating">
+                    <ul>
+                        <li>
+                            <input type='radio' value='1' name='rating' id='radio1'/>
+                            <label for='radio1' style='color: rgb(255, 0, 0)'>
+                                <div class="radio-container">
+                                    <i class="fa-solid fa-face-tired"></i>
+                                    <span>Terrible</span>
+                                </div>
+                            </label>
+                        </li>
+                        <li>
+                            <input type='radio' value='2' name='rating'  id='radio2'/>
+                            <label for='radio2' style='color: rgb(255, 123, 0)'>
+                                <div class="radio-container">
+                                    <i class="fa-solid fa-face-frown"></i>
+                                    <span>Bad</span>
+                                </div>
+                            </label>
+                        </li>
+                        <li>
+                            <input type='radio' value='3' name='rating'  id='radio3'/>
+                            <label for='radio3' style='color:rgb(255, 255, 0)'>
+                                <div class="radio-container">
+                                    <i class="fa-solid fa-face-meh"></i>
+                                    <span>OK</span>
+                                </div>
+                            </label>
+                        </li>
+                        <li>
+                            <input type='radio' value='4' name='rating'  id='radio4'/>
+                            <label for='radio4' style='color:rgb(0, 255, 0)'>
+                                <div class="radio-container">
+                                    <i class="fa-solid fa-face-smile"></i>
+                                    <span>Good</span>
+                                </div>
+                            </label>
+                        </li>
+                        <li>
+                            <input type='radio' value='5' name='rating'  id='radio5'/>
+                            <label for='radio5' style='color:rgb(0, 255, 149)'>
+                                <div class="radio-container">
+                                    <i class="fa-solid fa-face-grin-stars"></i>
+                                    <span>Excellent</span>
+                                </div>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="description">
+                    <label for="description">Describe your day:</label>
+                    <input type="text" name="description" id="description">
+                </div>
+                <button type="submit">Submit</button>
+
+                <% if (messages.length > 0) { %>
+                    <div class="flash-messages">
+                        <% messages.forEach(message => { %>
+                        <div class="flash-message">
+                            <%= message %>
                         </div>
-                    </label>
-                </li>
-                <li>
-                    <input type='radio' value='2' name='radio'  id='radio2'/>
-                    <label for='radio2' style='color: rgb(249, 173, 73)'>
-                        <div class="radio-container">
-                            <i class="fa-solid fa-face-frown"></i>
-                            <span>Bad</span>
-                        </div>
-                    </label>
-                </li>
-                <li>
-                    <input type='radio' value='3' name='radio'  id='radio3'/>
-                    <label for='radio3' style='color:rgb(247, 254, 53)'>
-                        <div class="radio-container">
-                            <i class="fa-solid fa-face-meh"></i>
-                            <span>OK</span>
-                        </div>
-                    </label>
-                </li>
-                <li>
-                    <input type='radio' value='4' name='radio'  id='radio4'/>
-                    <label for='radio4' style='color:#4cd12b'>
-                        <div class="radio-container">
-                            <i class="fa-solid fa-face-smile"></i>
-                            <span>Good</span>
-                        </div>
-                    </label>
-                </li>
-                <li>
-                    <input type='radio' value='5' name='radio'  id='radio5'/>
-                    <label for='radio5' style='color:#3ab422'>
-                        <div class="radio-container">
-                            <i class="fa-solid fa-face-grin-stars"></i>
-                            <span>Excellent</span>
-                        </div>
-                    </label>
-                </li>
-            </ul>
-            <button type="submit">Submit</button>
-          </form>
+                        <% }); %>
+                    </div>
+                <% } %>
+
+            <% } else { %>
+                <div>
+                    <h2>You have already posted your mood today</h2>
+                    <h3>Want to inspect your memories?</h3>
+                    <form action="/memories">
+                        <button type="submit" style="width: 200px;">Yes please</button>
+                    </form>
+                </div>
+            <% } %>
+            
+        </form>
     </div>
 </body>
 </html>
