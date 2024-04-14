@@ -3,5 +3,6 @@ export const protectRoute = (req, res, next) => {
         return next();
     }
     console.log('Route protected, redirecting.');
+    req.flash('protect', 'You must be logged in to access this page');
     res.redirect('/login');
 }

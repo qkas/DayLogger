@@ -6,9 +6,10 @@
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <script src="https://kit.fontawesome.com/c39f856afb.js" crossorigin="anonymous"></script>
     <link rel="preload" href="https://kit.fontawesome.com/c39f856afb.js" as="script" crossorigin="anonymous">
-    <title><%= title %></title>
+    <title>Dashboard</title>
 </head>
 <body>
+    <%- include('partials/header') %>
     <div class="wrapper">
         <h1>Good <%= timeOfDay %>, <u><%= user.username %></u>.</h1>
 
@@ -69,28 +70,28 @@
                     <input type="text" name="description" id="description">
                 </div>
                 <button type="submit">Submit</button>
+            </form>
 
-                <% if (messages.length > 0) { %>
-                    <div class="flash-messages">
-                        <% messages.forEach(message => { %>
-                        <div class="flash-message">
-                            <%= message %>
-                        </div>
-                        <% }); %>
+            <% if (messages.length > 0) { %>
+                <div class="flash-messages">
+                    <% messages.forEach(message => { %>
+                    <div class="flash-message">
+                        <%= message %>
                     </div>
-                <% } %>
-
-            <% } else { %>
-                <div>
-                    <h2>You have already posted your mood today</h2>
-                    <h3>Want to inspect your memories?</h3>
-                    <form action="/memories">
-                        <button type="submit" style="width: 200px;">Yes please</button>
-                    </form>
+                    <% }); %>
                 </div>
             <% } %>
+
+        <% } else { %>
+
+            <h2>You have posted your mood today</h2>
+            <h3>Want to inspect your memories?</h3>
+            <form action="/memories">
+                <button type="submit" style="width: 200px;">Yes please</button>
+            </form>
             
-        </form>
+        <% } %>
+            
     </div>
 </body>
 </html>

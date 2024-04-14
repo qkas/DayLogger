@@ -1,7 +1,5 @@
 import { Mood } from "../models/Mood.js";
 
-const title = 'Dashboard';
-
 export const dashboardView = async (req, res) => {
   const currentTime = new Date();
   let timeOfDay;
@@ -26,7 +24,6 @@ export const dashboardView = async (req, res) => {
   });
 
   res.render('dashboard', {
-    title,
     timeOfDay,
     user: req.user,
     messages: req.flash('failure'),
@@ -42,10 +39,10 @@ export const postMood = (req, res) => {
   }
   if (!rating) {
     req.flash('failure', 'Please select mood rating');
-    return res.redirect('/dashboard');
+    return res.redirect('/');
   } else if (!description) {
     req.flash('failure', 'Please write something about your day');
-    return res.redirect('/dashboard');
+    return res.redirect('/');
   } else {
     const newMood = new Mood({
       rating,
@@ -53,7 +50,7 @@ export const postMood = (req, res) => {
       author: req.user._id,
     });
     newMood.save()
-      .then(() => res.redirect('/dashboard'))
+      .then(() => res.redirect('/'))
       .catch((err) => console.log(err));
   }
 }

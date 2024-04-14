@@ -46,7 +46,6 @@ app.use(session({
     secret: process.env.SESSION_SECRET,
     saveUninitialized: true,
     resave: true,
-    cookie: { maxAge: 900000  } // 15 minutes
 }));
 
 // use flash messages

@@ -8,7 +8,7 @@ export const memoriesView = async (req, res) => {
             .limit(5);
 
         res.render("memories", {
-            title: 'Memories',
+            user: req.user,
             moods: moods
         });
     } catch (err) {
