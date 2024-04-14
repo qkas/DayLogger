@@ -43,6 +43,7 @@ nav ul li button {
 
 nav ul li button:hover {
     background-color: #555;
+    border-radius: 8px;
 }
 
 .wrapper {
