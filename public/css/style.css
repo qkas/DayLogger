@@ -167,3 +167,15 @@ form input:focus {
     align-items: center;
     flex-direction: column;
 }
+
+.mood ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    list-style-type: none;
+}
+
+.mood span {
+    color: #286455;
+}

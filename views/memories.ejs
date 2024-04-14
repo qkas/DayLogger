@@ -11,18 +11,19 @@
     <%- include('partials/header') %>
     <div class="wrapper">
     <h1>Recent Moods</h1>
-    <ul>
+    <div class="mood-container">
         <% moods.forEach(mood=> { %>
-            <li>
-                <p>Rating: <%= mood.rating %></p>
-                <% if (mood.description) { %>
-                    <p>Description: <%= mood.description %></p>
+            <div class="mood">
+                <ul>
+                    <li>Rating: <span><%= mood.rating %></span></li>
+                    <% if (mood.description) { %>
+                        <li>Description: <span><%= mood.description %></span></li>
                     <% } %>
-                        <p>Date: <%= mood.date.toLocaleDateString() %></p>
-                    <br>
-            </li>
-            <% }); %>
-    </ul>
+                    <li>Date: <span><%= mood.date.toLocaleDateString() %></span></li>
+                </ul>
+            </div>
+        <% }); %>
+    </div>
 </div>
 </body>
 
