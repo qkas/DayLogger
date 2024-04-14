@@ -2,8 +2,7 @@ import { Mood } from "../models/Mood.js";
 
 const title = 'Dashboard';
 
-export const dashboardView = (req, res) => {
-  const hasPostedToday = false;
+export const dashboardView = async (req, res) => {
   const currentTime = new Date();
   let timeOfDay;
 
@@ -14,6 +13,18 @@ export const dashboardView = (req, res) => {
   } else {
     timeOfDay = 'Evening';
   }
+
+  const todayStart = new Date();
+  todayStart.setHours(0, 0, 0, 0);
+
+  const todayEnd = new Date();
+  todayEnd.setHours(23, 59, 59, 999);
+
+  const hasPostedToday = await Mood.exists({
+    author: req.user._id,
+    date: { $gte: todayStart, $lte: todayEnd }
+  });
+
   res.render('dashboard', {
     title,
     timeOfDay,
@@ -26,6 +37,9 @@ export const dashboardView = (req, res) => {
 export const postMood = (req, res) => {
   const { rating, description } = req.body;
   //Required
+  if (!req.user) {
+    return res.redirect('/login');
+  }
   if (!rating) {
     req.flash('failure', 'Please select mood rating');
     return res.redirect('/dashboard');
