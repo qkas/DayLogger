@@ -12,7 +12,7 @@ router.get('/', startView);
 router.get('/register', registerView);
 router.get('/login', loginView);
 router.get('/dashboard', protectRoute, dashboardView);
-router.get('/memories', memoriesView)
+router.get('/memories', protectRoute, memoriesView)
 
 router.post('/register', registerUser)
 router.post('/login', loginUser)
