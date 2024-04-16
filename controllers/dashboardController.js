@@ -34,7 +34,7 @@ export const dashboardView = async (req, res) => {
 export const postMood = (req, res) => {
   const { rating, description } = req.body;
   //Required
-  if (!req.user) {
+  if (!req.isAuthenticated()) { // double check
     return res.redirect('/login');
   }
   if (!rating) {
