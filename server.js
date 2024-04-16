@@ -59,4 +59,4 @@ app.use(passport.session());
 app.use('/', router);
 
 // start server
-app.listen(cfg.port, console.log(`Server running on http://localhost:${cfg.port}`));
+app.listen(cfg.port, console.log(`Server running on http://localhost:${cfg.port}/login`));
