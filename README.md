@@ -1,34 +1,28 @@
 # DayLogger
- A simple journal express application which lets you track each days mood
+A simple journal express application which lets you track each days mood
 
-## Install and start
-From the project directory, download and start MongoDB in a terminal using:
+## Set up and start
 
+Set up a MongoDB database and copy the connection string for the database.
+
+Make a `.env` file into the project folder and provide the variables: 
 ```sh
-docker-compose up
+MONGOLAB_URI="YOUR CONNECTION STRING"
+SESSION_SECRET="YOUR SESSION SECRET STRING"
 ```
 
-Install then start the Node.js page hit application in another terminal:
-
+Install the dependencies of the application in the terminal using:
 ```sh
 npm install
+```
+
+Start the application in the terminal using:
+```sh
 npm start
 ```
 
-Start a web server in another terminal:
-
-```sh
-npx small-static-server 8888 ./test
-```
-
-The application is available on <http://localhost:8888>.
+The application is available on <http://localhost:3000/login>.
 
 ## Shutdown
 
-Stop the Docker MongoDB server in a terminal using:
-
-```sh
-docker-compose down
-```
-
-Press `Ctrl` | `Cmd` + `C` to stop the Node.js application and web server.
+Stop the application by pressing `Ctrl` | `Cmd` + `C` in the terminal.
