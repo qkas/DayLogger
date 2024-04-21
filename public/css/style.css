@@ -167,23 +167,35 @@ form input:focus {
     align-items: center;
     flex-direction: column;
 }
+
+.mood {
+    margin: 15px;
+    border: 2px solid #2C7865;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 10px;
+}
+
 .mood ul {
     display: flex;
-    justify-content: center;
     align-items: center;
-    flex-direction: column;
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
 
-.mood span {
-    color: #286455;
+.mood li {
+    margin-right: 10px;
 }
 
-.mood-container {
-    border: 2px solid #2C7865;
-    border-radius: 20px;
-    padding: 20px;
-    margin: 10px;
+.mood li:nth-child(1) { /* rating icon */
+    font-size: 40px;
+}
+
+.mood li:nth-child(2) { /* description */
+    flex: 1;
+}
+
+.mood li:nth-child(3) { /* time */
+    font-weight: normal;
 }

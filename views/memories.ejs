@@ -18,25 +18,21 @@
         <% moods.forEach(mood=> { %>
             <div class="mood">
                 <ul>
-                    <li>Rating: 
-                        <span>
-                            <% if (mood.rating === 1) { %>
-                                <i class="fas fa-face-tired" style="color: rgb(255, 0, 0)"></i>
-                            <% } else if (mood.rating === 2) { %>
-                                <i class="fas fa-face-frown" style="color: rgb(255, 123, 0)"></i>
-                            <% } else if (mood.rating === 3) { %>
-                                <i class="fas fa-face-meh" style="color: rgb(255, 255, 0)"></i>
-                            <% } else if (mood.rating === 4) { %>
-                                <i class="fas fa-face-smile" style="color: rgb(0, 255, 0)"></i>
-                            <% } else if (mood.rating === 5) { %>
-                                <i class="fas fa-face-grin-stars" style="color: rgb(0, 255, 149)"></i>
-                            <% } %>
-                        </span>
-                    </li>
-                        <% if (mood.description) { %>
-                    <li>Description: <span><%= mood.description %></span></li>
+                    <li>
+                        <% if (mood.rating === 1) { %>
+                            <i class="fas fa-face-tired" style="color: rgb(255, 0, 0)"></i>
+                        <% } else if (mood.rating === 2) { %>
+                            <i class="fas fa-face-frown" style="color: rgb(255, 123, 0)"></i>
+                        <% } else if (mood.rating === 3) { %>
+                            <i class="fas fa-face-meh" style="color: rgb(255, 255, 0)"></i>
+                        <% } else if (mood.rating === 4) { %>
+                            <i class="fas fa-face-smile" style="color: rgb(0, 255, 0)"></i>
+                        <% } else if (mood.rating === 5) { %>
+                            <i class="fas fa-face-grin-stars" style="color: rgb(0, 255, 149)"></i>
                         <% } %>
-                    <li>Date: <span><%= mood.date.toLocaleDateString() %></span></li>
+                    </li>
+                    <li><%= mood.description %></li>
+                    <li><%= mood.date.toLocaleDateString() %></li>
                 </ul>
             </div>
         <% }); %>
